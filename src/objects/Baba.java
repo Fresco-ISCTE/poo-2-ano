@@ -1,9 +1,8 @@
 package objects;
 
+import pt.iscte.poo.game.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
-
-import java.util.Random;
 
 public class Baba extends GameElement {
 
@@ -29,8 +28,15 @@ public class Baba extends GameElement {
     }
 
     public void move(Direction d) {
-        Random rand = new Random();
-        setPosition(new Point2D(rand.nextInt(10), rand.nextInt(10)));
-        //TODO: Meti o setPosition() por coerencia, Luis deixei como random ainda, pronto, esta vai ser a tua parte no fundo :)
+        // O Point2D tem o método .plus() onde podemos somar um Vetor2D e é devolvido um novo ponto
+        // Calcular qual será a nova posição com base na tecla pressionada
+        Point2D newPos = getPosition().plus(d.asVector());
+
+        // Mudar a direção do baba
+        direction = d.getName();
+
+        // Verificar se a nova posição é uma parede
+        if (!GameEngine.getInstance().getCurrentRoom().isWall(newPos))
+            setPosition(newPos);
     }
 }

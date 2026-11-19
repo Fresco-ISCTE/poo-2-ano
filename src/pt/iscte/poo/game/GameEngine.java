@@ -121,8 +121,4 @@ public class GameEngine implements Observer {
     public Baba getPlayer() {
         return currentRoom.getPlayer();
     }
-
-    public Room getCurrentRoom() {
-        return currentRoom;
-    }
 }

@@ -10,6 +10,8 @@ import java.util.Scanner;
 import objects.Baba;
 import objects.Dirt;
 import objects.GameElement;
+import objects.Wall;
+import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
 public class Room {
@@ -209,5 +211,12 @@ public class Room {
      */
     public Baba getPlayer() {
         return player;
+    }
+
+    public boolean isWall(Point2D position) {
+        for (ImageTile t : elements)
+            if (t instanceof Wall && t.getPosition().equals(position))
+                return true;
+        return false;
     }
 }
