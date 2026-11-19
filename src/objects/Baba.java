@@ -27,16 +27,16 @@ public class Baba extends GameElement {
         return "baba-" + direction;
     }
 
+    /**
+     * Altera a posicao do baba
+     * @param d Direcao onde vai o baba
+     */
     public void move(Direction d) {
-        // O Point2D tem o método .plus() onde podemos somar um Vetor2D e é devolvido um novo ponto
-        // Calcular qual será a nova posição com base na tecla pressionada
         Point2D newPos = getPosition().plus(d.asVector());
 
-        // Mudar a direção do baba
         direction = d.getName();
 
-        // Verificar se a nova posição é uma parede
-        if (!GameEngine.getInstance().getCurrentRoom().isWall(newPos))
+        if (!GameEngine.getInstance().getCurrentRoom().isWall(newPos) && GameEngine.getInstance().getCurrentRoom().isInside(newPos))
             setPosition(newPos);
     }
 }

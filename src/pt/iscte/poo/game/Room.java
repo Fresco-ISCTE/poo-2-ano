@@ -213,6 +213,11 @@ public class Room {
         return player;
     }
 
+    /**
+     * Verifica se a posicao é uma Wall
+     * @param position posição a verificar
+     * @return true se corresponder a uma Wall
+     */
     public boolean isWall(Point2D position) {
         for (ImageTile t : elements)
             if (t instanceof Wall && t.getPosition().equals(position))
